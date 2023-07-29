@@ -18,7 +18,8 @@ browser.get(START_URL)
 
 time.sleep(10)
 
-scarped_data = []
+#make empty list of scraped_data
+
 
 
 # Define Data Scrapping Method
@@ -45,7 +46,7 @@ def scrape():
             table_cols = row.find_all('td')
             # print(table_cols)
             
-            temp_list = []
+            
 
             for col_data in table_cols:
                 # Print Only colums textual data using ".text" property
@@ -55,10 +56,10 @@ def scrape():
                 data = col_data.text.strip()
                 # print(data)
 
-                temp_list.append(data)
+                
 
             # Append data to star_data list
-            scarped_data.append(temp_list)
+            
 
 
        
@@ -69,28 +70,15 @@ scrape()
 
 # IMPORT DATA to CSV
 
-stars_data = []
-
-
-for i in range(0,len(scarped_data)):
-    
-    Star_names = scarped_data[i][1]
-    Distance = scarped_data[i][3]
-    Mass = scarped_data[i][5]
-    Radius = scarped_data[i][6]
-    Lum = scarped_data[i][7]
-
-    required_data = [Star_names, Distance, Mass, Radius, Lum]
-    stars_data.append(required_data)
 
 print(stars_data)
 
 
 # Define Header
-headers = ['Star_name','Distance','Mass','Radius','Luminosity']  
+
 
 # Define pandas DataFrame   
-star_df_1 = pd.DataFrame(stars_data, columns=headers)
+
 
 #Convert to CSV
-star_df_1.to_csv('scraped_data.csv',index=True, index_label="id")
+
